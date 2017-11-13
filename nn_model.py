@@ -2,9 +2,16 @@ import numpy as np
 from nn_activations import activation_functions
 def initialize_parameters(L, xavier = True, epsilon = 0.01):
     '''
-        inputs: L a list of hiddend units in all layers from 0 to L
-        outputs: parameters, a dictionary of W, b for each layer of L.
+
+    Args:
+        L(list): List of nodes in each of the layers including the input and output lauer.
+        xavier(boolean): True for Xavier initialization otherwise random initialization.
+        epsilon(float): If xavier is false this will be used as the mean of the weights.
+
+    Returns:
+        dict: Dictionary of weights and biases.
     '''
+
     
     np.random.seed(1)
     parameters = {}
@@ -21,15 +28,22 @@ def initialize_parameters(L, xavier = True, epsilon = 0.01):
 
 def forward_propogation(X, parameters, activations, keep_prob = 1.0, gradient_check = False):
     '''
-        input: X is the input or A_0 with sample as columns
-        parameters: W and b for each layer in a dictionary
-        L: list of layer's hidden units
-        activations: activation functions for each layer
-        
-        output: AL which is the final activation value
+    Return the final activation and cache after forward proppogation.
+
+    Args:
+        X (ndarry): Samples as columns, features in rows.
+        parameters(dict): Dictionary with ndarray of weights and biases.
+        activations(list):  List of activations in the different layers {'relu', 'sigmoid', 'leaky-relu'}.
+        keep_prob(float): If less than 1.0, dropout regularization will be implemented.
+        gradient_check(boolean): Switches off dropout regularization to allow checking gradient with a numerical check.
+    Returns:
+        tuple:  A (ndarray), Final activation for each sample as array of floats,
+        cache (dict), dictionary of the Z, A and derivs for each layer.
+
     '''
     cache = {}
-    
+
+
     if gradient_check:
         keep_prob = 1.0
     
@@ -58,15 +72,34 @@ def forward_propogation(X, parameters, activations, keep_prob = 1.0, gradient_ch
 
 def L2_cost(parameters):
     '''
-        input: parameters
-        output: L2 which is the L2 cost of 
+    Returns the L2 norm of all the weights.
+
+    Args:
+        parameters (dict): Dictionary of weights and biases
+
+    Returns:
+        float: L2 norm of weights.
+
     '''
     L2 = 0.
     for parameter_name, parameter in parameters.items():
         if 'W' in parameter_name:
            L2 += np.sum(np.square(parameter))
         return L2
+
 def compute_cost(AL, Y, parameters, L2):
+    '''
+    Computes the cost cross entropy cost of the precictions.
+
+    Args:
+        AL(ndarray): Final activations (logits).
+        Y(ndarry): Labels.
+        parameters(dict):  Dictionary of weights and biases.
+        L2(float): if not None or 0, you will get L2 regularization with L2 penalty.
+
+    Returns:
+        float: cost.
+    '''
 
     m = AL.shape[1]
     cost = -np.matmul(Y, np.log(AL.T)) - np.matmul(1-Y, np.log(1-AL.T))
@@ -79,6 +112,20 @@ def compute_cost(AL, Y, parameters, L2):
     return cost
 
 def back_propogation(AL,Y, parameters,activations, cache, L2):
+    '''
+    Returns the gradients after backpropogation.
+
+    Args:
+        AL(ndarry): Final activations (logits).
+        Y(ndarry): Labels.
+        parameters(dict):  Dictionary of weights and biases.
+        activations(list):  List of activations in the different layers {'relu', 'sigmoid', 'leaky-relu'}.
+        cache (dict): Dictionary of the Z, A and derivs for each layer.
+        L2(float): If not None or 0, you will get L2 regularization with L2 penalty.
+
+    Returns:
+        dict: Dictionary of gradients.
+    '''
     grads = {}
     layers = len(activations)
     m = AL.shape[1]
@@ -104,6 +151,17 @@ def back_propogation(AL,Y, parameters,activations, cache, L2):
         
     
 def update_parameters(parameters, grads, learning_rate):
+    '''
+    Update the weights and biases with the learning rate and the gradients.
+
+    Args:
+        parameters(dict):  Dictionary of weights and biases.
+        grads(dict): Dictionary of gradients.
+        learning_rate(float): learning rate.
+
+    Returns:
+        dict: Updated dictionary of weights and biases.
+    '''
     for parameter_name in parameters:
         parameters[parameter_name] =parameters[parameter_name]- learning_rate * grads['d' + parameter_name]
 
@@ -111,7 +169,26 @@ def update_parameters(parameters, grads, learning_rate):
     
     
 def run_model(X, Y, L2, keep_prob, learning_rate,L, activations, xavier = True, iterations=1000, gradient_check = False, print_cost = False):
+    '''
+    Trains the model given a X and Y and learning paramaters.
 
+    Args:
+        X (ndarry): Samples as columns, features in rows.
+        Y(ndarry): Labels.
+        L2(float): If not None or 0, you will get L2 regularization with L2 penalty.
+        keep_prob(float): If less than 1.0, dropout regularization will be implemented.
+        learning_rate(float): Learning rate.
+        L(list): List of nodes in each of the layers including the input and output lauer.
+        activations(list):  List of activations in the different layers {'relu', 'sigmoid', 'leaky-relu'}.
+        xavier(boolean): True for Xavier initialization otherwise random initialization.
+        iterations(int): Number of iterations.
+        gradient_check(boolean): Switches off dropout regularization to allow checking gradient with a numerical check.
+        print_cost(boolean): True to print cost as you train.
+
+    Returns:
+        tuple: parameters(dict): Learned parameters.
+        grad(dict): Learned gradients.
+    '''
     np.random.seed(1)
     assert len(L) == len(activations)+1, 'L different from activations'
     parameters = initialize_parameters(L, xavier)
@@ -135,13 +212,19 @@ def run_model(X, Y, L2, keep_prob, learning_rate,L, activations, xavier = True, 
 
 def predict(X,Y, parameters, activations):
     '''
-        input: X is the input or A_0 with sample as columns
-        parameters: W and b for each layer in a dictionary
-        L: list of layer's hidden units
-        activations: activation functions for each layer
-        
-        output: AL which is the final activation value
+    Returns the preidctions of the model and the accuracy score.
+
+    Args:
+        X (ndarry): Samples as columns, features in rows.
+        Y(ndarry): Labels.
+        parameters(dict):  Dictionary of weights and biases.
+        activations(list):  List of activations in the different layers {'relu', 'sigmoid', 'leaky-relu'}.
+
+    Returns:
+        tuple: Y_pred(ndarray): Predicted labels.
+        accuracy(float): Accuracy score.
     '''
+
     m = Y.shape[1]
     AL, _ = forward_propogation(X, parameters, activations, keep_prob = 1.0, gradient_check = False)
     

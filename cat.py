@@ -4,8 +4,21 @@ import h5py
 import matplotlib.pyplot as plt
 np.random.seed(1)
 class cat_data(data):
-    # import PIL
+    '''
+    Class implementation for cat dataset.
+    '''
     def load_data(self, train_path, test_path):
+        '''
+
+        Loads the cata data given the paths.
+
+        Args:
+            train_path(str): Training data file path.
+            test_path(str): Testing data file path.
+
+        Returns:
+
+        '''
         train_dataset = h5py.File(train_path, 'r')
         test_dataset = h5py.File(test_path,'r')
         train_set_x_orig = np.array(train_dataset["train_set_x"][:])
@@ -19,6 +32,13 @@ class cat_data(data):
         return train_set_x_orig, train_set_y_orig, test_set_x_orig, test_set_y_orig, classes
 
     def transform_data(self):
+        '''
+        Transforms the original data so that they are normalized and in features are in rows.
+        Returns:
+            tuple: train_set_x_orig(ndarray): Transformed training data.
+            test_set_x_orig(ndarray): Transformed test data.
+
+        '''
         m = self.train_X_orig.shape[0]
         train_set_x_orig = self.train_X_orig.reshape(m, -1).T/255.
         # train_set_x_orig = train_set_x_orig[:100,:]
@@ -27,6 +47,15 @@ class cat_data(data):
         return train_set_x_orig, test_set_x_orig
     
     def show_errors(self, num_errors = 5):
+        '''
+        Shows the errors.
+
+        Args:
+            num_errors: Number of errors to show.
+
+        Returns:
+
+        '''
         super(cat_data,self).show_errors()
 
         show_num_errors = min(num_errors, np.sum(self.errors*1))
@@ -42,7 +71,19 @@ class cat_data(data):
 
 
     def show_data(self, index, size = 6, X = np.array([]), Y = np.array([])):
-        
+        '''
+
+        Shows picture of a given index from a dataset and it's label.
+
+        Args:
+            index(int): Data sample to show.
+            size(int): Size of the image.
+            X: X of dataset.
+            Y: Y of dataset.
+
+
+        '''
+
         if X.shape[0] == 0:
             X = self.train_X_orig
         if Y.shape[0] == 0:
@@ -58,7 +99,16 @@ class cat_data(data):
         
 
 def unit_test():
-    # Test number one should print This is a cat Accuracy is 98.5645933014% Accuracy is 80.0%
+    '''
+
+    Runs the coursera unit test for the cat dataset.
+
+    This should print:
+    This is a cat Accuracy is 98.5645933014% Accuracy is 80.0%
+
+
+    '''
+
     cat_dataset = cat_data('./dataset/train_catvnoncat.h5', './dataset/test_catvnoncat.h5')
     cat_dataset.show_data(2)
     L = [12288,20,7,5,1]

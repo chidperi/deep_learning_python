@@ -1,0 +1,173 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>cat module &#8212; Deep Learning Python 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-cat">
+<span id="cat-module"></span><h1>cat module<a class="headerlink" href="#module-cat" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="cat.cat_data">
+<em class="property">class </em><code class="descclassname">cat.</code><code class="descname">cat_data</code><a class="headerlink" href="#cat.cat_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="data.html#data.data" title="data.data"><code class="xref py py-class docutils literal"><span class="pre">data.data</span></code></a></p>
+<p>Class implementation for cat dataset.</p>
+<dl class="method">
+<dt id="cat.cat_data.load_data">
+<code class="descname">load_data</code><span class="sig-paren">(</span><em>train_path</em>, <em>test_path</em><span class="sig-paren">)</span><a class="headerlink" href="#cat.cat_data.load_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads the cata data given the paths.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>train_path</strong> (<em>str</em>) – Training data file path.</li>
+<li><strong>test_path</strong> (<em>str</em>) – Testing data file path.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cat.cat_data.show_data">
+<code class="descname">show_data</code><span class="sig-paren">(</span><em>index</em>, <em>size=6</em>, <em>X=array([]</em>, <em>dtype=float64)</em>, <em>Y=array([]</em>, <em>dtype=float64)</em><span class="sig-paren">)</span><a class="headerlink" href="#cat.cat_data.show_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows picture of a given index from a dataset and it’s label.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>index</strong> (<em>int</em>) – Data sample to show.</li>
+<li><strong>size</strong> (<em>int</em>) – Size of the image.</li>
+<li><strong>X</strong> – X of dataset.</li>
+<li><strong>Y</strong> – Y of dataset.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="cat.cat_data.show_errors">
+<code class="descname">show_errors</code><span class="sig-paren">(</span><em>num_errors=5</em><span class="sig-paren">)</span><a class="headerlink" href="#cat.cat_data.show_errors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the errors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>num_errors</strong> – Number of errors to show.</td>
+</tr>
+</tbody>
+</table>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="cat.cat_data.transform_data">
+<code class="descname">transform_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cat.cat_data.transform_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms the original data so that they are normalized and in features are in rows.
+:returns: train_set_x_orig(ndarray): Transformed training data.</p>
+<blockquote>
+<div>test_set_x_orig(ndarray): Transformed test data.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="cat.unit_test">
+<code class="descclassname">cat.</code><code class="descname">unit_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cat.unit_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the coursera unit test for the cat dataset.</p>
+<p>This should print:
+This is a cat Accuracy is 98.5645933014% Accuracy is 80.0%</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Chidambaram Periakaruppan.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/cat.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
