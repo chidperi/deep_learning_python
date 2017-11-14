@@ -1,7 +1,7 @@
-data module
-===========
+CatModel module
+===============
 
-.. automodule:: data
+.. automodule:: CatModel
     :members:
     :undoc-members:
     :show-inheritance:

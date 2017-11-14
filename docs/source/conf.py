@@ -32,9 +32,9 @@ sys.path.insert(0, os.path.abspath('../../'))
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
-    'sphinx.ext.todo',
-    'sphinx.ext.napoleon']
+              'sphinx.ext.doctest',
+              'sphinx.ext.todo',
+              'sphinx.ext.napoleon']
 napoleon_google_docstring = True
 
 # Add any paths that contain templates here, relative to this directory.
