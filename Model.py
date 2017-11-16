@@ -1,3 +1,8 @@
+# File name: test
+# Copyright 2017 Chidambaram Periakaruppan
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the
+# License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
 import numpy as np
 
 
@@ -67,7 +72,8 @@ class Model(object):
 
         self.errors = wrong
 
-    def train(self, NN, L, activations, L2, keep_prob, learning_rate, xavier, iterations, gradient_check, print_cost=True):
+    def train(self, NN, L, activations, lambd, keep_prob, learning_rate, xavier, iterations, seed, gradient_check,
+              print_cost=True):
         '''
         Trains the neural network using the training data.
 
@@ -75,11 +81,12 @@ class Model(object):
             NN(Object): Neural network class object {NN, NNTF}.
             L(list): List of nodes in each of the layers including the input and output lauer.
             activations(list):  List of activations in the different layers {'relu', 'sigmoid', 'leaky-relu'}.
-            L2(float): If not None or 0, you will get L2 regularization with L2 penalty.
+            lambd(float): If not None or 0, you will get L2 regularization with L2 penalty.
             keep_prob(float): If less than 1.0, dropout regularization will be implemented.
             learning_rate(float): Learning rate.
             xavier(boolean): True for Xavier initialization otherwise random initialization.
             iterations(int): Number of iterations.
+            seed(int): Ramdom number generator seed.
             gradient_check(boolean): Switches off dropout to allow checking gradient with a numerical check.
             print_cost(boolean): True to print cost as you train.
 
@@ -87,7 +94,7 @@ class Model(object):
         X = self.train_X
         Y = self.train_Y
         self.neural_net = NN(L, activations)
-        self.neural_net.fit(X, Y, L2, keep_prob, learning_rate, xavier=xavier, iterations=iterations,
+        self.neural_net.fit(X, Y, lambd, keep_prob, learning_rate, xavier=xavier, iterations=iterations, seed=seed,
                             gradient_check=gradient_check, print_cost=print_cost)
 
         return

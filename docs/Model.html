@@ -135,7 +135,12 @@
 
 <dl class="method">
 <dt id="Model.Model.train">
-<code class="descname">train</code><span class="sig-paren">(</span><em>NN</em>, <em>L</em>, <em>activations</em>, <em>L2</em>, <em>keep_prob</em>, <em>learning_rate</em>, <em>xavier</em>, <em>iterations</em>, <em>gradient_check</em>, <em>print_cost=True</em><span class="sig-paren">)</span><a class="headerlink" href="#Model.Model.train" title="Permalink to this definition">¶</a></dt>
+    <code class="descname">train</code><span class="sig-paren">(</span><em>NN</em>, <em>L</em>, <em>activations</em>,
+    <em>lambd</em>, <em>keep_prob</em>, <em>learning_rate</em>, <em>xavier</em>, <em>iterations</em>, <em>seed</em>,
+    <em>gradient_check</em>, <em>print_cost=True</em><span class="sig-paren">)</span><a class="headerlink"
+                                                                                        href="#Model.Model.train"
+                                                                                        title="Permalink to this definition">¶</a>
+</dt>
 <dd><p>Trains the neural network using the training data.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -145,11 +150,12 @@
 <li><strong>NN</strong> (<em>Object</em>) – Neural network class object {NN, NNTF}.</li>
 <li><strong>L</strong> (<em>list</em>) – List of nodes in each of the layers including the input and output lauer.</li>
 <li><strong>activations</strong> (<em>list</em>) – List of activations in the different layers {‘relu’, ‘sigmoid’, ‘leaky-relu’}.</li>
-<li><strong>L2</strong> (<em>float</em>) – If not None or 0, you will get L2 regularization with L2 penalty.</li>
+    <li><strong>lambd</strong> (<em>float</em>) – If not None or 0, you will get L2 regularization with L2 penalty.</li>
 <li><strong>keep_prob</strong> (<em>float</em>) – If less than 1.0, dropout regularization will be implemented.</li>
 <li><strong>learning_rate</strong> (<em>float</em>) – Learning rate.</li>
 <li><strong>xavier</strong> (<em>boolean</em>) – True for Xavier initialization otherwise random initialization.</li>
 <li><strong>iterations</strong> (<em>int</em>) – Number of iterations.</li>
+    <li><strong>seed</strong> (<em>int</em>) – Ramdom number generator seed.</li>
 <li><strong>gradient_check</strong> (<em>boolean</em>) – Switches off dropout to allow checking gradient with a numerical check.</li>
 <li><strong>print_cost</strong> (<em>boolean</em>) – True to print cost as you train.</li>
 </ul>

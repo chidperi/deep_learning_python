@@ -1,3 +1,8 @@
+# File name: test
+# Copyright 2017 Chidambaram Periakaruppan
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the
+# License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
 from Model import Model
 import numpy as np
 import h5py
@@ -113,7 +118,7 @@ def unit_test():
 
     '''
 
-    cat_model = CatModel('./dataset/train_catvnoncat.h5', './dataset/test_catvnoncat.h5')
+    cat_model = CatModel('./dataset/cat/train_catvnoncat.h5', './dataset/cat/test_catvnoncat.h5')
     # cat_model.show_data(2)
     L = [12288, 20, 7, 5, 1]
     activations = ['relu', 'relu', 'relu', 'sigmoid']
