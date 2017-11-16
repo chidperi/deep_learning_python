@@ -1,4 +1,4 @@
-# File name: test
+# File name: FootballModel
 # Copyright 2017 Chidambaram Periakaruppan
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the
 # License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
@@ -53,10 +53,6 @@ class FootballModel(Model):
         '''
         Shows the errors.
 
-        Args:
-
-        Returns:
-
         '''
         super(FootballModel, self).show_errors()
 
@@ -69,7 +65,7 @@ class FootballModel(Model):
     def show_data(self, X=np.array([]), Y=np.array([])):
         '''
 
-        Shows thes positions that the ball was won and lost.
+        Shows the positions that the ball was won and lost.
 
         Args:
             X: X of dataset.
@@ -91,7 +87,6 @@ class FootballModel(Model):
     def plot_decision_boundary(self):
         '''
         Plots the points and decision boundary after the training.
-        Returns:
 
         '''
 
@@ -118,10 +113,24 @@ class FootballModel(Model):
 def unit_test():
     '''
 
-    Runs the coursera unit test for the cat dataset.
+    Runs the coursera unit test for the football dataset.
 
     This should print:
-    This is a cat Accuracy is 98.5645933014% Accuracy is 80.0%
+    0 0.655741252348
+    10000 0.163299875257
+    20000 0.138516424233
+    Accuracy is 94.7867298578199%
+    Accuracy is 91.5%
+    0 0.697448449313
+    10000 0.268491887328
+    20000 0.268091633713
+    Accuracy is 93.8388625592417%
+    Accuracy is 93.0%
+    0 0.654391240515
+    10000 0.0610169865749
+    20000 0.0605824357985
+    Accuracy is 92.89099526066352%
+    Accuracy is 95.0%
 
 
     '''
@@ -138,7 +147,7 @@ def unit_test():
     print_cost = True
     xavier = True
 
-    football_model.train(NNTF, L, activations, lambd, keep_prob, learning_rate, xavier, iterations, 3, gradient_check,
+    football_model.train(NN, L, activations, lambd, keep_prob, learning_rate, xavier, iterations, 3, gradient_check,
                          print_cost=print_cost)
     football_model.plot_decision_boundary()
     football_model.predict_train()
@@ -158,7 +167,7 @@ def unit_test():
     print_cost = True
     xavier = True
 
-    football_model.train(NNTF, L, activations, lambd, keep_prob, learning_rate, xavier, iterations, 3, gradient_check,
+    football_model.train(NN, L, activations, lambd, keep_prob, learning_rate, xavier, iterations, 3, gradient_check,
                          print_cost=print_cost)
     football_model.plot_decision_boundary()
     football_model.predict_train()
@@ -178,7 +187,7 @@ def unit_test():
     print_cost = True
     xavier = True
 
-    football_model.train(NNTF, L, activations, lambd, keep_prob, learning_rate, xavier, iterations, 3, gradient_check,
+    football_model.train(NN, L, activations, lambd, keep_prob, learning_rate, xavier, iterations, 3, gradient_check,
                          print_cost=print_cost)
     football_model.plot_decision_boundary()
     football_model.predict_train()
