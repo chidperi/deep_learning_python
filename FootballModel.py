@@ -8,8 +8,9 @@ import numpy as np
 import h5py
 import matplotlib.pyplot as plt
 import scipy.io
-from NN import NN
-from NNTF import NNTF
+# from NN import NN
+# from NNTF import NNTF
+from NNKeras import NNKeras as NN
 
 np.random.seed(1)
 
@@ -149,7 +150,7 @@ def unit_test():
 
     football_model.train(NN, L, activations, lambd, keep_prob, learning_rate, xavier, iterations, 3, gradient_check,
                          print_cost=print_cost)
-    football_model.plot_decision_boundary()
+    # football_model.plot_decision_boundary()
     football_model.predict_train()
     football_model.predict_test()
     # football_model.show_errors()
@@ -159,7 +160,7 @@ def unit_test():
     # football_model.show_data()
     L = [2, 20, 3, 1]
     activations = ['relu', 'relu', 'sigmoid']
-    lambd = 0.7
+    lambd = 0.01
     keep_prob = 1.
     learning_rate = 0.3
     iterations = 30000
@@ -169,7 +170,7 @@ def unit_test():
 
     football_model.train(NN, L, activations, lambd, keep_prob, learning_rate, xavier, iterations, 3, gradient_check,
                          print_cost=print_cost)
-    football_model.plot_decision_boundary()
+    # football_model.plot_decision_boundary()
     football_model.predict_train()
     football_model.predict_test()
     # football_model.show_errors()
@@ -180,7 +181,8 @@ def unit_test():
     L = [2, 20, 3, 1]
     activations = ['relu', 'relu', 'sigmoid']
     lambd = 0.
-    keep_prob = [0.86, 0.86, 1.]
+    # keep_prob = [0.86, 0.86, 1.]
+    keep_prob = [1., 1., 1.]
     learning_rate = 0.3
     iterations = 30000
     gradient_check = False
@@ -189,7 +191,7 @@ def unit_test():
 
     football_model.train(NN, L, activations, lambd, keep_prob, learning_rate, xavier, iterations, 3, gradient_check,
                          print_cost=print_cost)
-    football_model.plot_decision_boundary()
+    # football_model.plot_decision_boundary()
     football_model.predict_train()
     football_model.predict_test()
     # football_model.show_errors()
