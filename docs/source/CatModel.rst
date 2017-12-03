@@ -2,6 +2,6 @@ CatModel module
 ===============
 
 .. automodule:: CatModel
-    :members:
-    :undoc-members:
-    :show-inheritance:
+:members:
+        :undoc-members:
+            :show-inheritance:

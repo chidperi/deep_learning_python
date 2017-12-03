@@ -1,9 +1,8 @@
-# File name: CatModel
-# Copyright 2017 Chidambaram Periakaruppan
-# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the
+# File name: GradientCheck
+# Copyright 2017 Chidambaram Periakaruppan 
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the 
 # License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
 
-import h5py
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -13,7 +12,7 @@ from NN import NN
 np.random.seed(1)
 
 
-class CatModel(Model):
+class GCModel(Model):
     '''
     Class implementation for cat model.
     '''
@@ -30,31 +29,32 @@ class CatModel(Model):
         Returns:
 
         '''
-        train_dataset = h5py.File(train_path, 'r')
-        test_dataset = h5py.File(test_path, 'r')
-        train_set_x_orig = np.array(train_dataset["train_set_x"][:])
-        train_set_y_orig = np.array(train_dataset["train_set_y"][:])
-        test_set_x_orig = np.array(test_dataset["test_set_x"][:])
-        test_set_y_orig = np.array(test_dataset["test_set_y"][:])
-        classes = np.array(test_dataset["list_classes"][:])
+        np.random.seed(1)
+        train_set_x_orig = np.random.randn(4, 3)
+        train_set_x_orig = train_set_x_orig.T
 
-        train_set_y_orig = train_set_y_orig.reshape(train_set_y_orig.shape[0], -1)
-        test_set_y_orig = test_set_y_orig.reshape(test_set_y_orig.shape[0], -1)
+        train_set_y_orig = np.array([[1], [1], [0]])
+
+        test_set_x_orig = train_set_x_orig
+        test_set_y_orig = train_set_y_orig
+        classes = [0, 1]
+
         return train_set_x_orig, train_set_y_orig, test_set_x_orig, test_set_y_orig, classes
 
     def transform_data(self):
         '''
-        Transforms the original data so that they are normalized and samples are in columns and features are in rows.
+        Transforms the original data so that they are normalized and samples are in rows and features are in columns.
         Returns:
             tuple: train_set_x_orig(ndarray): Transformed training data.
             test_set_x_orig(ndarray): Transformed test data.
 
         '''
+
         m = self.train_X_orig.shape[0]
-        train_set_x_orig = self.train_X_orig.reshape(m, -1) / 255.
+        train_set_x_orig = self.train_X_orig.reshape(m, -1)
         # train_set_x_orig = train_set_x_orig[:100,:]
         m_test = self.test_X_orig.shape[0]
-        test_set_x_orig = self.test_X_orig.reshape(m_test, -1) / 255.
+        test_set_x_orig = self.test_X_orig.reshape(m_test, -1)
         return train_set_x_orig, test_set_x_orig
 
     def show_errors(self, num_errors=5):
@@ -112,36 +112,35 @@ def unit_test():
 
     Runs the coursera unit test for the cat dataset.
 
+    This should print:
+    This is a cat Accuracy is 98.5645933014% Accuracy is 80.0%
+
 
     '''
 
-    cat_model = CatModel('./dataset/cat/train_catvnoncat.h5', './dataset/cat/test_catvnoncat.h5', unit_test=True)
+    gc_model = GCModel('', '', unit_test=True)
     # cat_model.show_data(2)
-    L = [12288, 20, 7, 5, 1]
-    activations = ['relu', 'relu', 'relu', 'sigmoid']
+    L = [4, 5, 3, 1]
+    activations = ['relu', 'relu', 'sigmoid']
     L2 = 0
     keep_prob = 1.
     learning_rate = 0.0075
-    epochs = 2500
-    mini_batch_size = None
-    gradient_check = False
+    iterations = 1
+    gradient_check = True
     print_cost = False
-    init_method = 'xavier'
+    xavier = False
 
-    cat_model.train(NN, L, activations, L2, keep_prob, learning_rate, init_method, epochs, mini_batch_size, 1,
-                    gradient_check,
-                    print_cost=print_cost)
-    cat_model.predict_train()
-    cat_model.predict_test()
-    # cat_model.show_errors()
+    gc_model.train(NN, L, activations, L2, keep_prob, learning_rate, xavier, iterations, 1, gradient_check,
+                   print_cost=print_cost)
+    gc_model.gradient_check(L2, print_gradients=False)
 
-    expected_result = {'J': 0.088439943441702001, 'train': 0.9856459330143541, 'test': 0.8}
-    print('Cat model result', cat_model.unit_test)
-    print('Cat model expected', expected_result)
-    if cat_model.unit_test == expected_result:
-        print("Cat model unit test: OK!!!")
+    expected_result = {'J': 0.69314719280598658, 'grad_diff': 8.7674820454588602e-09}
+    print('GC model result', gc_model.unit_test)
+    print('GC model expected', expected_result)
+    if gc_model.unit_test == expected_result:
+        print("GC model unit test: OK!!!")
     else:
-        print("Cat model results don't match expected results. Please check!!!")
+        print("GC model results don't match expected results. Please check!!!")
     return
 
 

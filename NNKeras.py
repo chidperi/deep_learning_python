@@ -9,10 +9,10 @@ np.random.seed(1337)  # for reproducibility
 import tensorflow as tf
 
 tf.set_random_seed(2)
-from keras.layers import Input, Dense, Activation, Dropout, InputLayer
+from keras.layers import Input, Dense, Activation, Dropout
 from keras.regularizers import l2
-from keras.models import Sequential, Model
-from keras.initializers import lecun_normal, lecun_uniform
+from keras.models import Model
+from keras.initializers import lecun_normal
 from keras.optimizers import SGD
 
 

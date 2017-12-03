@@ -40,92 +40,34 @@
             
   <div class="section" id="module-CatModel">
 <span id="catmodel-module"></span><h1>CatModel module<a class="headerlink" href="#module-CatModel" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="CatModel.CatModel">
-<em class="property">class </em><code class="descclassname">CatModel.</code><code class="descname">CatModel</code><span class="sig-paren">(</span><em>train_path</em>, <em>test_path</em><span class="sig-paren">)</span><a class="headerlink" href="#CatModel.CatModel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="Model.html#Model.Model" title="Model.Model"><code class="xref py py-class docutils literal"><span class="pre">Model.Model</span></code></a></p>
-<p>Class implementation for cat model.</p>
-<dl class="method">
-<dt id="CatModel.CatModel.load_data">
-<code class="descname">load_data</code><span class="sig-paren">(</span><em>train_path</em>, <em>test_path</em><span class="sig-paren">)</span><a class="headerlink" href="#CatModel.CatModel.load_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads the cata data given the paths.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>train_path</strong> (<em>str</em>) – Training data file path.</li>
-<li><strong>test_path</strong> (<em>str</em>) – Testing data file path.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p>Returns:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="CatModel.CatModel.show_data">
-<code class="descname">show_data</code><span class="sig-paren">(</span><em>index</em>, <em>size=6</em>, <em>X=array([]</em>, <em>dtype=float64)</em>, <em>Y=array([]</em>, <em>dtype=float64)</em><span class="sig-paren">)</span><a class="headerlink" href="#CatModel.CatModel.show_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Shows picture of a given index from a dataset and it’s label.</p>
-<table class="docutils field-list" frame="void" rules="none">
+<tr class="field-odd field">
+    <th class="field-name">members:</th>
+    <td class="field-body">
+        <table class="first last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>index</strong> (<em>int</em>) – Data sample to show.</li>
-<li><strong>size</strong> (<em>int</em>) – Size of the image.</li>
-<li><strong>X</strong> – X of dataset.</li>
-<li><strong>Y</strong> – Y of dataset.</li>
-</ul>
-</td>
+<tr class="field-odd field">
+    <th class="field-name">undoc-members:</th>
+    <td class="field-body"></td>
+</tr>
+<tr class="field-even field">
+    <th class="field-name" colspan="2">show-inheritance:</th>
+</tr>
+<tr class="field-even field">
+    <td>&#160;</td>
+    <td class="field-body"></td>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="method">
-<dt id="CatModel.CatModel.show_errors">
-<code class="descname">show_errors</code><span class="sig-paren">(</span><em>num_errors=5</em><span class="sig-paren">)</span><a class="headerlink" href="#CatModel.CatModel.show_errors" title="Permalink to this definition">¶</a></dt>
-<dd><p>Shows the errors.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>num_errors</strong> – Number of errors to show.</td>
+    </td>
 </tr>
 </tbody>
 </table>
-<p>Returns:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="CatModel.CatModel.transform_data">
-<code class="descname">transform_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CatModel.CatModel.transform_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transforms the original data so that they are normalized and samples are in columns and features are in rows.
-:returns: train_set_x_orig(ndarray): Transformed training data.</p>
-<blockquote>
-<div>test_set_x_orig(ndarray): Transformed test data.</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="function">
-<dt id="CatModel.unit_test">
-<code class="descclassname">CatModel.</code><code class="descname">unit_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#CatModel.unit_test" title="Permalink to this definition">¶</a></dt>
-<dd><p>Runs the coursera unit test for the cat dataset.</p>
-<p>This should print:
-This is a cat Accuracy is 98.5645933014% Accuracy is 80.0%</p>
-</dd></dl>
-
 </div>
 
 

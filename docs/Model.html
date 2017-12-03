@@ -40,138 +40,34 @@
             
   <div class="section" id="module-Model">
 <span id="model-module"></span><h1>Model module<a class="headerlink" href="#module-Model" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="Model.Model">
-<em class="property">class </em><code class="descclassname">Model.</code><code class="descname">Model</code><span class="sig-paren">(</span><em>train_path</em>, <em>test_path</em><span class="sig-paren">)</span><a class="headerlink" href="#Model.Model" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<p>Class for model objects.</p>
-<dl class="attribute">
-<dt id="Model.Model.train_X">
-<code class="descname">train_X</code><a class="headerlink" href="#Model.Model.train_X" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>ndarray</em> – X training dataset.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Model.Model.train_Y">
-<code class="descname">train_Y</code><a class="headerlink" href="#Model.Model.train_Y" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>ndarray</em> – Y training dataset.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Model.Model.neural_net">
-<code class="descname">neural_net</code><a class="headerlink" href="#Model.Model.neural_net" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>Object</em> – Neural network class to be initialized later.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Model.Model.train_accuracy">
-<code class="descname">train_accuracy</code><a class="headerlink" href="#Model.Model.train_accuracy" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>float</em> – Accuracy for the train dataset.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Model.Model.errors">
-<code class="descname">errors</code><a class="headerlink" href="#Model.Model.errors" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>ndarray</em> – Errors in test dataset.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Model.Model.test_Y_pred">
-<code class="descname">test_Y_pred</code><a class="headerlink" href="#Model.Model.test_Y_pred" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>ndarray</em> – Y predictions for test dataset.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="Model.Model.test_accuracy">
-<code class="descname">test_accuracy</code><a class="headerlink" href="#Model.Model.test_accuracy" title="Permalink to this definition">¶</a></dt>
-<dd><p><em>float</em> – Accuracy for the test dataset.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="Model.Model.load_data">
-<code class="descname">load_data</code><span class="sig-paren">(</span><em>train_path</em>, <em>test_path</em><span class="sig-paren">)</span><a class="headerlink" href="#Model.Model.load_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>Loads the data given the paths.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>train_path</strong> (<em>str</em>) – Training data file path.</li>
-<li><strong>test_path</strong> (<em>str</em>) – Testing data file path.</li>
-</ul>
+<tr class="field-odd field">
+    <th class="field-name">members:</th>
+    <td class="field-body">
+        <table class="first last docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field">
+    <th class="field-name">undoc-members:</th>
+    <td class="field-body"></td>
+</tr>
+<tr class="field-even field">
+    <th class="field-name" colspan="2">show-inheritance:</th>
+</tr>
+<tr class="field-even field">
+    <td>&#160;</td>
+    <td class="field-body"></td>
+</tr>
+</tbody>
+</table>
 </td>
 </tr>
 </tbody>
 </table>
-<p>Returns:</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="Model.Model.predict_test">
-<code class="descname">predict_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.Model.predict_test" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates the prediction and accuracy from the test data.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="Model.Model.predict_train">
-<code class="descname">predict_train</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.Model.predict_train" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculates the prediction and accuracy from the training data.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="Model.Model.show_errors">
-<code class="descname">show_errors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.Model.show_errors" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">all errors where the prediction is different from the label.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">ndarray</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="Model.Model.train">
-    <code class="descname">train</code><span class="sig-paren">(</span><em>NN</em>, <em>L</em>, <em>activations</em>,
-    <em>lambd</em>, <em>keep_prob</em>, <em>learning_rate</em>, <em>xavier</em>, <em>iterations</em>, <em>seed</em>,
-    <em>gradient_check</em>, <em>print_cost=True</em><span class="sig-paren">)</span><a class="headerlink"
-                                                                                        href="#Model.Model.train"
-                                                                                        title="Permalink to this definition">¶</a>
-</dt>
-<dd><p>Trains the neural network using the training data.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>NN</strong> (<em>Object</em>) – Neural network class object {NN, NNTF}.</li>
-<li><strong>L</strong> (<em>list</em>) – List of nodes in each of the layers including the input and output lauer.</li>
-<li><strong>activations</strong> (<em>list</em>) – List of activations in the different layers {‘relu’, ‘sigmoid’, ‘leaky-relu’}.</li>
-    <li><strong>lambd</strong> (<em>float</em>) – If not None or 0, you will get L2 regularization with L2 penalty.</li>
-<li><strong>keep_prob</strong> (<em>float</em>) – If less than 1.0, dropout regularization will be implemented.</li>
-<li><strong>learning_rate</strong> (<em>float</em>) – Learning rate.</li>
-<li><strong>xavier</strong> (<em>boolean</em>) – True for Xavier initialization otherwise random initialization.</li>
-<li><strong>iterations</strong> (<em>int</em>) – Number of iterations.</li>
-    <li><strong>seed</strong> (<em>int</em>) – Ramdom number generator seed.</li>
-<li><strong>gradient_check</strong> (<em>boolean</em>) – Switches off dropout to allow checking gradient with a numerical check.</li>
-<li><strong>print_cost</strong> (<em>boolean</em>) – True to print cost as you train.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="Model.Model.transform_data">
-<code class="descname">transform_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Model.Model.transform_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 </div>
 
 

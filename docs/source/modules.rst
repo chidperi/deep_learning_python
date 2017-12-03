@@ -2,10 +2,10 @@ deep_learning_python
 ====================
 
 .. toctree::
-   :maxdepth: 4
+:maxdepth: 4
 
-   CatModel
-   Model
-   NN
-   NNActivations
-   NNTF
+       CatModel
+       Model
+       NN
+       NNActivations
+       NNTF

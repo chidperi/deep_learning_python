@@ -40,235 +40,34 @@
             
   <div class="section" id="module-NN">
 <span id="nn-module"></span><h1>NN module<a class="headerlink" href="#module-NN" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="NN.NN">
-<em class="property">class </em><code class="descclassname">NN.</code><code class="descname">NN</code><span class="sig-paren">(</span><em>L</em>, <em>activations</em><span class="sig-paren">)</span><a class="headerlink" href="#NN.NN" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<p>Creates the NN instance which is a python neural network.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>L</strong> (<em>list</em>) – List of nodes in each of the layers including the input and output lauer.</li>
-<li><strong>activations</strong> (<em>list</em>) – List of activations in the different layers {‘relu’, ‘sigmoid’, ‘leaky-relu’}.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Attributes</dt>
-<dd>L(list): List of nodes in each of the layers including the input and output lauer.
-layers(int): Number of layers.
-activations(list): List of activations in the different layers {‘relu’, ‘sigmoid’, ‘leaky-relu’}.
-    parameters(dict): Dictionary with ndarray of weights and biases.
-    keep_prob(array-like): List of keep_probs for the different layers.
-</dd>
-</dl>
-<dl class="method">
-<dt id="NN.NN.L2_cost">
-<code class="descname">L2_cost</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#NN.NN.L2_cost" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the L2 norm of all the weights.</p>
-<table class="docutils field-list" frame="void" rules="none">
+<tr class="field-odd field">
+    <th class="field-name">members:</th>
+    <td class="field-body">
+        <table class="first last docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">L2 norm of weights.</td>
+<tr class="field-odd field">
+    <th class="field-name">undoc-members:</th>
+    <td class="field-body"></td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+<tr class="field-even field">
+    <th class="field-name" colspan="2">show-inheritance:</th>
+</tr>
+<tr class="field-even field">
+    <td>&#160;</td>
+    <td class="field-body"></td>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="method">
-<dt id="NN.NN.back_propogation">
-<code class="descname">back_propogation</code><span class="sig-paren">(</span><em>AL</em>, <em>Y</em>, <em>cache</em>, <em>L2</em><span class="sig-paren">)</span><a class="headerlink" href="#NN.NN.back_propogation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the gradients after backpropogation.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>AL</strong> (<em>ndarry</em>) – Final activations (logits).</li>
-<li><strong>Y</strong> (<em>ndarry</em>) – Labels.</li>
-<li><strong>cache</strong> (<em>dict</em>) – Dictionary of the Z, A and derivs for each layer.</li>
-<li><strong>L2</strong> (<em>float</em>) – If not None or 0, you will get L2 regularization with L2 penalty.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dictionary of gradients.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
 </td>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="method">
-<dt id="NN.NN.compute_cost">
-    <code class="descname">compute_cost</code><span class="sig-paren">(</span><em>AL</em>, <em>Y</em>,
-    <em>lambd</em><span class="sig-paren">)</span><a class="headerlink" href="#NN.NN.compute_cost"
-                                                     title="Permalink to this definition">¶</a></dt>
-<dd><p>Computes the cost cross entropy cost of the precictions.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>AL</strong> (<em>ndarray</em>) – Final activations (logits).</li>
-<li><strong>Y</strong> (<em>ndarry</em>) – Labels.</li>
-    <li><strong>lambd</strong> (<em>float</em>) – if not None or 0, you will get L2 regularization with L2 penalty.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">cost.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="NN.NN.fit">
-    <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em>, <em>lambd</em>, <em>keep_prob</em>,
-    <em>learning_rate</em>, <em>xavier=True</em>, <em>iterations=1000</em>, <em>seed=1</em>,
-    <em>gradient_check=False</em>, <em>print_cost=False</em><span class="sig-paren">)</span><a class="headerlink"
-                                                                                               href="#NN.NN.fit"
-                                                                                               title="Permalink to this definition">¶</a>
-</dt>
-<dd><p>Trains the model given a X and Y and learning paramaters.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>ndarry</em>) – Samples as columns, features in rows.</li>
-<li><strong>Y</strong> (<em>ndarry</em>) – Labels.</li>
-    <li><strong>lambd</strong> (<em>float</em>) – If not None or 0, you will get L2 regularization with L2 penalty.</li>
-    <li><strong>keep_prob</strong> (<em>float</em><em> or </em><em>array</em>) – Must be between 0.0 and 1.0. If array
-        must match activations dimension.
-    </li>
-<li><strong>learning_rate</strong> (<em>float</em>) – Learning rate.</li>
-<li><strong>xavier</strong> (<em>boolean</em>) – True for Xavier initialization otherwise random initialization.</li>
-<li><strong>iterations</strong> (<em>int</em>) – Number of iterations.</li>
-    <li><strong>seed</strong> (<em>int</em>) – Ramdom number generator seed.</li>
-<li><strong>gradient_check</strong> (<em>boolean</em>) – Switches off dropout to allow checking gradient with a numerical check.</li>
-<li><strong>print_cost</strong> (<em>boolean</em>) – True to print cost as you train.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">parameters(dict): Learned parameters.
-grad(dict): Learned gradients.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="NN.NN.forward_propogation">
-<code class="descname">forward_propogation</code><span class="sig-paren">(</span><em>X</em>, <em>keep_prob=1.0</em>, <em>gradient_check=False</em><span class="sig-paren">)</span><a class="headerlink" href="#NN.NN.forward_propogation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the final activation and cache after forward proppogation.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>ndarry</em>) – Samples as columns, features in rows.</li>
-<li><strong>keep_prob</strong> (<em>float</em>) – If less than 1.0, dropout regularization will be implemented.</li>
-<li><strong>gradient_check</strong> (<em>boolean</em>) – Switches off dropout to allow checking gradient with a numerical check.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">A (ndarray), Final activation for each sample as array of floats,
-cache (dict), dictionary of the Z, A and derivs for each layer.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="NN.NN.initialize_parameters">
-    <code class="descname">initialize_parameters</code><span class="sig-paren">(</span><em>xavier=True</em>, <em>epsilon=0.01</em>,
-    <em>seed=1</em><span class="sig-paren">)</span><a class="headerlink" href="#NN.NN.initialize_parameters"
-                                                      title="Permalink to this definition">¶</a></dt>
-<dd><p>Initializes dictionary of parameters of weights and biases</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>xavier</strong> (<em>boolean</em>) – True for Xavier initialization otherwise random initialization.</li>
-<li><strong>epsilon</strong> (<em>float</em>) – If xavier is false this will be used as the mean of the weights.</li>
-    <li><strong>seed</strong> (<em>int</em>) – Ramdom number generator seed.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="NN.NN.predict">
-    <code class="descname">predict</code><span class="sig-paren">(</span><em>X</em>, <em>Y=array([]</em>, <em>dtype=float64)</em><span
-        class="sig-paren">)</span><a class="headerlink" href="#NN.NN.predict" title="Permalink to this definition">¶</a>
-</dt>
-<dd><p>Returns the preidctions of the model and the accuracy score.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>X</strong> (<em>ndarry</em>) – Samples as columns, features in rows.</li>
-    <li><strong>Y</strong> (<em>ndarry</em>) – Labels. If empty array there will be no accuracy score.</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Y_pred(ndarray): Predicted labels.
-    accuracy(float): Accuracy score if Y array is not empty.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="NN.NN.update_parameters">
-<code class="descname">update_parameters</code><span class="sig-paren">(</span><em>grads</em>, <em>learning_rate</em><span class="sig-paren">)</span><a class="headerlink" href="#NN.NN.update_parameters" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update the weights and biases with the learning rate and the gradients.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>grads</strong> (<em>dict</em>) – Dictionary of gradients.</li>
-<li><strong>learning_rate</strong> (<em>float</em>) – learning rate.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
 </div>
 
 

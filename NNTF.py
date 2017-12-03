@@ -3,8 +3,8 @@
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the
 # License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
 
-import tensorflow as tf
 import numpy as np
+import tensorflow as tf
 
 activation_functions = {'relu': tf.nn.relu, 'sigmoid': tf.nn.sigmoid}
 
@@ -25,6 +25,7 @@ class NNTF(object):
          keep_prob(float or list): If below 1.0, dropout regularization will be implemented.
 
      '''
+
     def __init__(self, L, activations):
 
         assert len(L) == len(activations) + 1, 'L different from activations'
@@ -46,9 +47,6 @@ class NNTF(object):
         layers = len(self.activations) - 1
         lin_activations['0d'] = self.X
 
-
-
-
         for l in range(0, layers):
             lin_activations[str(l + 1)] = tf.contrib.layers.fully_connected(
                 activation_fn=activation_functions[self.activations[l]],
@@ -56,13 +54,12 @@ class NNTF(object):
                 inputs=lin_activations[str(l) + 'd'], num_outputs=self.L[l + 1],
                 weights_initializer=tf.contrib.layers.xavier_initializer(seed=seed),
                 weights_regularizer=L2
-                )
+            )
 
             lin_activations[str(l + 1) + 'd'] = tf.nn.dropout(x=lin_activations[str(l + 1)],
                                                               keep_prob=self.keep_prob[l],
                                                               seed=seed
                                                               )
-
 
         output_layer = tf.contrib.layers.fully_connected(activation_fn=None,
                                                          biases_initializer=tf.zeros_initializer,

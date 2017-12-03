@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -16,7 +17,6 @@
         HAS_SOURCE:  true,
         SOURCELINK_SUFFIX: '.txt'
       };
-
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
@@ -42,141 +42,41 @@
                     <span id="footballmodel-module"></span>
                     <h1>FootballModel module<a class="headerlink" href="#module-FootballModel"
                                                title="Permalink to this headline">¶</a></h1>
-                    <dl class="class">
-                        <dt id="FootballModel.FootballModel">
-                            <em class="property">class </em><code class="descclassname">FootballModel.</code><code
-                                class="descname">FootballModel</code><span class="sig-paren">(</span><em>train_path</em>,
-                            <em>test_path</em><span class="sig-paren">)</span><a class="headerlink"
-                                                                                 href="#FootballModel.FootballModel"
-                                                                                 title="Permalink to this definition">¶</a>
-                        </dt>
-                        <dd><p>Bases: <a class="reference internal" href="Model.html#Model.Model"
-                                         title="Model.Model"><code class="xref py py-class docutils literal"><span
-                                class="pre">Model.Model</span></code></a></p>
-                            <p>Class implementation for football model.</p>
-                            <dl class="method">
-                                <dt id="FootballModel.FootballModel.load_data">
-                                    <code class="descname">load_data</code><span class="sig-paren">(</span><em>train_path</em>,
-                                    <em>test_path</em><span class="sig-paren">)</span><a class="headerlink"
-                                                                                         href="#FootballModel.FootballModel.load_data"
-                                                                                         title="Permalink to this definition">¶</a>
-                                </dt>
-                                <dd><p>Loads the football data given the path.</p>
-                                    <table class="docutils field-list" frame="void" rules="none">
-                                        <col class="field-name"/>
-                                        <col class="field-body"/>
-                                        <tbody valign="top">
-                                        <tr class="field-odd field">
-                                            <th class="field-name">Parameters:</th>
-                                            <td class="field-body"><strong>data_path</strong> (<em>str</em>) – Ddata
-                                                file path.
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                    <p>Returns:</p>
-                                </dd>
-                            </dl>
-
-                            <dl class="method">
-                                <dt id="FootballModel.FootballModel.plot_decision_boundary">
-                                    <code class="descname">plot_decision_boundary</code><span class="sig-paren">(</span><span
-                                        class="sig-paren">)</span><a class="headerlink"
-                                                                     href="#FootballModel.FootballModel.plot_decision_boundary"
-                                                                     title="Permalink to this definition">¶</a></dt>
-                                <dd><p>Plots the points and decision boundary after the training.</p>
-                                </dd>
-                            </dl>
-
-                            <dl class="method">
-                                <dt id="FootballModel.FootballModel.show_data">
-                                    <code class="descname">show_data</code><span class="sig-paren">(</span><em>X=array([]</em>,
-                                    <em>dtype=float64)</em>, <em>Y=array([]</em>, <em>dtype=float64)</em><span
-                                        class="sig-paren">)</span><a class="headerlink"
-                                                                     href="#FootballModel.FootballModel.show_data"
-                                                                     title="Permalink to this definition">¶</a></dt>
-                                <dd><p>Shows the positions that the ball was won and lost.</p>
-                                    <table class="docutils field-list" frame="void" rules="none">
-                                        <col class="field-name"/>
-                                        <col class="field-body"/>
-                                        <tbody valign="top">
-                                        <tr class="field-odd field">
-                                            <th class="field-name">Parameters:</th>
-                                            <td class="field-body">
-                                                <ul class="first last simple">
-                                                    <li><strong>X</strong> – X of dataset.</li>
-                                                    <li><strong>Y</strong> – Y of dataset.</li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </dd>
-                            </dl>
-
-                            <dl class="method">
-                                <dt id="FootballModel.FootballModel.show_errors">
-                                    <code class="descname">show_errors</code><span class="sig-paren">(</span><span
-                                        class="sig-paren">)</span><a class="headerlink"
-                                                                     href="#FootballModel.FootballModel.show_errors"
-                                                                     title="Permalink to this definition">¶</a></dt>
-                                <dd><p>Shows the errors.</p>
-                                </dd>
-                            </dl>
-
-                            <dl class="method">
-                                <dt id="FootballModel.FootballModel.transform_data">
-                                    <code class="descname">transform_data</code><span class="sig-paren">(</span><span
-                                        class="sig-paren">)</span><a class="headerlink"
-                                                                     href="#FootballModel.FootballModel.transform_data"
-                                                                     title="Permalink to this definition">¶</a></dt>
-                                <dd><p>Does nothing for the football dataset.
-                                    :returns: train_set_x_orig(ndarray): Transformed training data.</p>
-                                    <blockquote>
-                                        <div>test_set_x_orig(ndarray): Transformed test data.</div>
-                                    </blockquote>
-                                    <table class="docutils field-list" frame="void" rules="none">
-                                        <col class="field-name"/>
-                                        <col class="field-body"/>
-                                        <tbody valign="top">
-                                        <tr class="field-odd field">
-                                            <th class="field-name">Return type:</th>
-                                            <td class="field-body">tuple</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </dd>
-                            </dl>
-
-                        </dd>
-                    </dl>
-
-                    <dl class="function">
-                        <dt id="FootballModel.unit_test">
-                            <code class="descclassname">FootballModel.</code><code
-                                class="descname">unit_test</code><span class="sig-paren">(</span><span
-                                class="sig-paren">)</span><a class="headerlink" href="#FootballModel.unit_test"
-                                                             title="Permalink to this definition">¶</a></dt>
-                        <dd><p>Runs the coursera unit test for the football dataset.</p>
-                            <p>This should print:
-                                0 0.655741252348
-                                10000 0.163299875257
-                                20000 0.138516424233
-                                Accuracy is 94.7867298578199%
-                                Accuracy is 91.5%
-                                0 0.697448449313
-                                10000 0.268491887328
-                                20000 0.268091633713
-                                Accuracy is 93.8388625592417%
-                                Accuracy is 93.0%
-                                0 0.654391240515
-                                10000 0.0610169865749
-                                20000 0.0605824357985
-                                Accuracy is 92.89099526066352%
-                                Accuracy is 95.0%</p>
-                        </dd>
-                    </dl>
-
+                    <table class="docutils field-list" frame="void" rules="none">
+                        <col class="field-name"/>
+                        <col class="field-body"/>
+                        <tbody valign="top">
+                        <tr class="field-odd field">
+                            <th class="field-name">members:</th>
+                            <td class="field-body">
+                                <table class="first last docutils field-list" frame="void" rules="none">
+                                    <col class="field-name"/>
+                                    <col class="field-body"/>
+                                    <tbody valign="top">
+                                    <tr class="field-odd field">
+                                        <th class="field-name">undoc-members:</th>
+                                        <td class="field-body">
+                                            <table class="first last docutils field-list" frame="void" rules="none">
+                                                <col class="field-name"/>
+                                                <col class="field-body"/>
+                                                <tbody valign="top">
+                                                <tr class="field-odd field">
+                                                    <th class="field-name" colspan="2">show-inheritance:</th>
+                                                </tr>
+                                                <tr class="field-odd field">
+                                                    <td>&#160;</td>
+                                                    <td class="field-body"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
 
 

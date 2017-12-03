@@ -18,17 +18,18 @@ class Model(object):
         errors(ndarray): Errors in test dataset.
         test_Y_pred(ndarray): Y predictions for test dataset.
         test_accuracy(float): Accuracy for the test dataset.
+        unit_test(dict): Unit test results dictionary.
 
     '''
 
-    def __init__(self, train_path, test_path):
+    def __init__(self, train_path, test_path, unit_test=False):
         '''
 
         Args:
             train_path(str): Training data file path.
             test_path(str): Testing data file path.
+            unit_test(boolean): Adds a dictionary for unit test results if True. Otherwise None.
         '''
-
 
         self.train_X_orig, self.train_Y, self.test_X_orig, self.test_Y, self.classes = self.load_data(train_path,
                                                                                                       test_path)
@@ -38,6 +39,7 @@ class Model(object):
         self.errors = None
         self.test_Y_pred = None
         self.test_accuracy = None
+        self.unit_test = {} if unit_test else None
 
     def load_data(self, train_path, test_path):
         '''
@@ -72,8 +74,9 @@ class Model(object):
 
         self.errors = wrong
 
-    def train(self, NN, L, activations, lambd, keep_prob, learning_rate, xavier, iterations, seed, gradient_check,
-              print_cost=True):
+    def train(self, NN, L, activations, lambd, keep_prob, learning_rate, xavier, num_epochs, mini_batch_size, seed,
+              gradient_check,
+              print_cost=True, **kwargs):
         '''
         Trains the neural network using the training data.
 
@@ -85,7 +88,8 @@ class Model(object):
             keep_prob(float): If less than 1.0, dropout regularization will be implemented.
             learning_rate(float): Learning rate.
             xavier(boolean): True for Xavier initialization otherwise random initialization.
-            iterations(int): Number of iterations.
+            num_epochs(int): Number of iterations.
+            mini_batch_size(int): Mini-batch size.
             seed(int): Ramdom number generator seed.
             gradient_check(boolean): Switches off dropout to allow checking gradient with a numerical check.
             print_cost(boolean): True to print cost as you train.
@@ -94,8 +98,12 @@ class Model(object):
         X = self.train_X
         Y = self.train_Y
         self.neural_net = NN(L, activations)
-        self.neural_net.fit(X, Y, lambd, keep_prob, learning_rate, xavier=xavier, iterations=iterations, seed=seed,
-                            gradient_check=gradient_check, print_cost=print_cost)
+
+        J = self.neural_net.fit(X, Y, lambd, keep_prob, learning_rate, xavier=xavier,
+                                num_epochs=num_epochs, mini_batch_size=mini_batch_size, seed=seed,
+                                gradient_check=gradient_check, print_cost=print_cost, **kwargs)
+        if type(self.unit_test) == dict:
+            self.unit_test['J'] = J
 
         return
 
@@ -109,6 +117,9 @@ class Model(object):
 
         _, self.train_accuracy = self.neural_net.predict(X, Y)
 
+        if type(self.unit_test) == dict:
+            self.unit_test['train'] = self.train_accuracy
+
     def predict_test(self):
         '''
         Calculates the prediction and accuracy from the test data.
@@ -120,4 +131,9 @@ class Model(object):
 
         self.test_Y_pred, self.test_accuracy = self.neural_net.predict(X, Y)
 
+        if type(self.unit_test) == dict:
+            self.unit_test['test'] = self.test_accuracy
 
+    def gradient_check(self, lambd, print_gradients=False):
+        self.unit_test['grad_diff'] = self.neural_net.gradient_check(self.train_X, self.train_Y, lambd,
+                                                                     print_gradients=print_gradients)
